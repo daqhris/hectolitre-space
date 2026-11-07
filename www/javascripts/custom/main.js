@@ -30,15 +30,13 @@
 
 
         //PRELOADER
+        // Hide the overlay as soon as the DOM is ready. It used to wait for
+        // window.load (every image downloaded) plus a 2 s delay and fade.
         $('body, html').addClass('preloader-running');
-        $('#mastwrap').css('visibility', 'hidden');
-        $(window).load(function() {
-            $("#status").fadeOut();
-            $("#preloader").delay(1000).fadeOut(1000);
+        $("#status").fadeOut(150);
+        $("#preloader").fadeOut(250, function() {
             $('body, html').removeClass('preloader-running');
             $('body, html').addClass('preloader-done');
-            $("#mastwrap").delay(1000).css('visibility',
-                'visible');
         });
 
 //Sub Menu Trigger

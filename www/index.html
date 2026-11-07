@@ -19,7 +19,9 @@
 
     <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,800&amp;subset=latin-ext" rel="stylesheet" type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,800&amp;subset=latin-ext&amp;display=swap" rel="stylesheet" type='text/css'>
 
     <!-- ICON FONTS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -73,17 +75,6 @@
     <link rel="stylesheet/less" type="text/css" href="less/fonts.less">
     <script src="less/less.min.js"></script> -->
 
-<script>
-
-$(window).bind('scroll', function() {
-     if ($(window).scrollTop() > 100) {
-         $('.scroll-down').hide();
-     }
-     else {
-         $('.scroll-down').show();
-     }
-});
-</script>
 
 </head>
 
@@ -348,6 +339,17 @@ $(window).bind('scroll', function() {
     <script src="javascripts/libs/common.js"></script>
     <script src="javascripts/libs/bootstrap.min.js"></script>
     <script src="javascripts/custom/main.js"></script>
+    <script>
+    
+    $(window).bind('scroll', function() {
+         if ($(window).scrollTop() > 100) {
+             $('.scroll-down').hide();
+         }
+         else {
+             $('.scroll-down').show();
+         }
+    });
+    </script>
 
 </body>
 
