@@ -216,15 +216,18 @@
                      <div class="alert alert-error  error color-bg" id="fmsg">
                        <p class="white">Le message ne doit pas être vide</p>
                      </div>
-                      <form name="myform" id="contactForm" action="sendcontact.php" enctype="multipart/form-data" method="post"> 
+                      <form name="myform" id="contactForm" action="sendcontact.php" method="post"> 
                         <article>
-                          <input type="text" placeholder="Nom et prénom" id="name" name="name" size="100" class="border-form white font4">
+                          <input type="text" placeholder="Nom et prénom" id="name" name="name" size="100" maxlength="100" autocomplete="name" class="border-form white font4">
                         </article>
                         <article>
-                           <input type="text" placeholder="Adresse email" name="email" id="email" size="30" class="border-form white font4light">
+                           <input type="email" placeholder="Adresse email" name="email" id="email" size="30" maxlength="254" autocomplete="email" class="border-form white font4light">
                         </article>
                          <article>
-                          <textarea placeholder="Message" name="message" cols="40" rows="5" id="msg" class="border-form white font4"></textarea>
+                          <textarea placeholder="Message" name="message" cols="40" rows="5" maxlength="5000" id="msg" class="border-form white font4"></textarea>
+                          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                            <label>Laissez ce champ vide <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                          </div>
                           <div class="btn-wrap  text-left">
                             <button class="btn btn-signature btn-signature-berend btn-signature-color" id="submit" name="submit" type="submit">Envoyer un email</button>
                           </div>
