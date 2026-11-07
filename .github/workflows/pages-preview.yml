@@ -1,0 +1,45 @@
+# Publishes the contents of www/ as a TEST site on GitHub Pages.
+# The official site is still updated by FTP (FileZilla) from www/.
+#
+# Run it by hand: Actions > "Pages preview" > Run workflow.
+# One-time setup: Settings > Pages > Build and deployment > Source: "GitHub Actions".
+name: Pages preview
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Copy www/ untouched, except server-only files that make no sense on
+      # GitHub Pages (PHP cannot run there and would be shown as plain text).
+      - name: Stage www/ without server-only files
+        run: |
+          mkdir _preview
+          cp -a www/. _preview/
+          rm -f _preview/sendcontact.php _preview/.htaccess
+          touch _preview/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _preview
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
