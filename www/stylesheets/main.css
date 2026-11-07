@@ -1176,3 +1176,18 @@ p {
   font-family: 'Barlow', sans-serif;
 }
 
+
+/* Accessibility: skip link, visible only when focused with the keyboard */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100000;
+  padding: 0.6em 1em;
+  background: #fff;
+  color: #000;
+  font-family: 'Barlow', sans-serif;
+}
+.skip-link:focus {
+  left: 0;
+}
