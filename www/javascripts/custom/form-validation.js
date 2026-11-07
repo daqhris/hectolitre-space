@@ -1,74 +1,42 @@
-$(document).ready(function($) {
+$(document).ready(function ($) {
 
-	// hide messages 
+	// Simple email check: something@something.tld, no spaces
+	function isValidEmailAddress(emailAddress) {
+		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
+	}
+
+	// hide messages
 	$(".error").hide();
 	$(".success").hide();
-	
-	$('#contactForm input').click(function(e) {
-        $(".error").fadeOut();
-    });
-	
-	// on submit...
-	$("#contactForm #submit").click(function() {
+
+	$('#contactForm input, #contactForm textarea').click(function () {
+		$(".error").fadeOut();
+	});
+
+	// on submit: stop the post and show the matching message when a field is invalid
+	$("#contactForm #submit").click(function () {
 		$(".error").hide();
-		
-		//required:
-		
-		//name
-		var name = $("input#name").val();
-		if(name == ""){
-			//$("#error").fadeIn().text("Name required.");
+
+		var name = $.trim($("#name").val());
+		if (name === "") {
 			$('#fname').fadeIn('slow');
-			$("input#name").focus();
+			$("#name").focus();
 			return false;
 		}
-		
-		//email (check if entered anything)
-		var email = $("input#email").val();
-		//email (check if entered anything)
-		if(email == ""){
-			//$("#error").fadeIn().text("Email required");
+
+		var email = $.trim($("#email").val());
+		if (email === "" || !isValidEmailAddress(email)) {
 			$('#fmail').fadeIn('slow');
-			$("input#email").focus();
+			$("#email").focus();
 			return false;
 		}
-		
-		//email (check if email entered is valid)
 
-		if (email !== "") {  // If something was entered
-			if (!isValidEmailAddress(email)) {
-				$('#fmail').fadeIn('slow'); //error message
-				$("input#email").focus();   //focus on email field
-				return false;  
-			}
-		} 
-
-function isValidEmailAddress(emailAddress) {
-    var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
-    return pattern.test(emailAddress);
-};
-
-		
-		
-		
-		// comments
-		var comments = $("#msg").val();
-		
-		if(comments == ""){
-			//$("#error").fadeIn().text("Email required");
+		var comments = $.trim($("#msg").val());
+		if (comments === "") {
 			$('#fmsg').fadeIn('slow');
-			$("input#msg").focus();
+			$("#msg").focus();
 			return false;
 		}
-	});  
-		
-		
-	// on success...
-	 function success(){
-	 	$("#success").fadeIn();
-	 	$("#contactForm").fadeOut();
-	 }
-	
-    return false;
-});
+	});
 
+});

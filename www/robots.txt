@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /sendcontact.php
+
+Sitemap: http://www.hectolitre.space/sitemap.xml
