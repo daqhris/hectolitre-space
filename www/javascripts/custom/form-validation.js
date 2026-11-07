@@ -5,6 +5,14 @@ $(document).ready(function ($) {
 		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
 	}
 
+	// show an error message and bring it into view below the fixed header
+	function showError(errorSelector, fieldSelector) {
+		var box = $(errorSelector);
+		box.fadeIn('slow');
+		$(fieldSelector).focus();
+		$('html, body').animate({ scrollTop: Math.max(0, box.offset().top - 180) }, 250);
+	}
+
 	// hide messages
 	$(".error").hide();
 	$(".success").hide();
@@ -19,24 +27,27 @@ $(document).ready(function ($) {
 
 		var name = $.trim($("#name").val());
 		if (name === "") {
-			$('#fname').fadeIn('slow');
-			$("#name").focus();
+			showError('#fname', '#name');
 			return false;
 		}
 
 		var email = $.trim($("#email").val());
 		if (email === "" || !isValidEmailAddress(email)) {
-			$('#fmail').fadeIn('slow');
-			$("#email").focus();
+			showError('#fmail', '#email');
 			return false;
 		}
 
 		var comments = $.trim($("#msg").val());
 		if (comments === "") {
-			$('#fmsg').fadeIn('slow');
-			$("#msg").focus();
+			showError('#fmsg', '#msg');
 			return false;
 		}
+	});
+
+	// once the form is really being sent, block a second click on the button
+	$("#contactForm").on("submit", function () {
+		var button = $("#submit");
+		setTimeout(function () { button.prop("disabled", true); }, 0);
 	});
 
 });

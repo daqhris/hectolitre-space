@@ -106,6 +106,10 @@ and the `.htaccess` rules do not apply there. Its `sitemap.xml`, `robots.txt` an
 5. Check the live site in a private window: home page, a recent event page, `memoire.html` and a missing address (404 page).
 6. Note the deployed commit (for example with a tag such as `deployed-YYYY-MM-DD`) so that the next upload knows where to start.
 
+After uploading `sendcontact.php`, send one real test message from the live contact page and check that it arrives
+(also look in the spam folder). The settings are at the top of that file; `SENDER_EMAIL` must be a mailbox of the hosting
+domain, otherwise OVH may refuse or flag the mail.
+
 `.htaccess` sets UTF-8, the 404 page, compression, browser caching (HTML 1 hour, CSS/JS 1 week, images 1 month) and basic
 security headers. Every block is guarded, so a module missing on the host is skipped instead of breaking the site.
 The redirect to HTTPS is present but commented out: turn it on only after `https://www.hectolitre.space/` is confirmed
@@ -120,14 +124,15 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
 - **Phase 4, front end**: the loading screen no longer waits for every image; unused rules removed from Bootstrap, Ionicons
   and Sinister (CSS per page from 372 KB to 71 KB); unused video plugin removed; script-order error fixed; font swap.
 - **Phase 6, standards**: `.htaccess`, `robots.txt`, `sitemap.xml`, Open Graph tags, skip link and main landmark.
+- **Phase 5, contact form**: `sendcontact.php` rewritten (server-side validation, accents kept in names, plain-text UTF-8 mail
+  sent from a fixed address of the domain with the visitor in Reply-To, hidden anti-spam field, link limit, no header injection);
+  the form scrolls to its error message; double clicks are blocked.
 - **Phase 7, documentation**: this file; manual GitHub Pages preview.
 
 ## Known issues and next steps
 
 - **Image weight (phase 3, not done)**: images total about 339 MB. 59 are over 1 MB and 8 pages load more than 5 MB
   (the heaviest, `echange_200107.html`, about 33 MB). Resizing and re-encoding them is the largest remaining speed gain.
-- **Contact form (phase 5, not done)**: `sendcontact.php` builds its sender header from visitor input, sends in ISO-8859-1
-  and has no spam protection.
 - **`post01.html`**: an old template page linking about 47 pages that never existed. Nothing links to it; it is marked `noindex`.
 - **Event pages not linked from any page**: 27 (reachable by their address only), for example `echange_190115.html`.
   They are in `sitemap.xml`.
