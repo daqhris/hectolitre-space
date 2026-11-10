@@ -30,7 +30,7 @@ README.md, LICENSE, .gitignore, .gitattributes
 | `espaces.html` | The venues: Le Trait d'Union, Le Réacteur, Studio Hectolitre, residency programme |
 | `community.html`, `members.html` | Community archive; list of members |
 | `web-publications.html`, `video-vitrine.html` | Web publications; video showcase |
-| `memoire.html` | **Archive of all events**: a filterable grid (Événements, Résidences, Recherches, Rencontres) linking to each event page |
+| `memoire.html` | **Archive of all events**: a filterable grid (Événements, Résidences, Recherches, Rencontres) linking to each event page. Reached from the menu (ARCHIVES) and from the "Archives / Mémoire" card on the home page |
 | `participer.html`, `post-0.html` … `post-6.html` | Calls for projects / residencies and their detailed announcements |
 | `contact.html`, `sendcontact.php`, `thanks.html` | Contact form, its mail handler, and the confirmation page |
 | `error404.html` | Custom "not found" page (declared in `.htaccess`) |
@@ -41,6 +41,9 @@ README.md, LICENSE, .gitignore, .gitattributes
 167 pages named **`echange_YYMMDD.html`** (year, month, day of the event), from `echange_180420.html` to `echange_260911.html`.
 Some have a suffix for several events on one day (`echange_190924-1024.html`).
 Special pages: `echange_template.html` (model for a new event page), `echange_playful.html`, `echange_atelier_archive.html`.
+Every event page is listed in `memoire.html` except three, left out on purpose: `echange_template.html`, `echange_playful.html`
+(a 2019 collective flea market, still reachable by its address) and `echange_2000926.html` (a byte-identical copy of `echange_200108.html`,
+kept so that its old address still works).
 
 Each event page's `<title>` and description are taken from its own heading and text.
 
@@ -48,23 +51,23 @@ Each event page's `<title>` and description are taken from its own heading and t
 
 | Folder | Content |
 |---|---|
-| `images/works/` | Thumbnails of the archive grid in `memoire.html`, named `YYMMDD.jpg` |
+| `images/works/` | Thumbnails of the archive grid in `memoire.html`, named `YYMMDD.jpg` (the thumbnails added in phase 8 are 640 px wide and under 150 KB; some older ones are much heavier, see "Image weight") |
 | `images/news/` | Photos used inside event pages (`YYMMDD.jpg`, `YYMMDD-1.jpg`…) |
 | `images/project/`, `images/memoir/`, `images/members/`, `images/clients/`, `images/bg/` | Images of the matching pages |
 | `images/` (root) | Logos (`logo.png`, `hectolitre-blue-logo*.png/jpg`), favicon, icons |
 | `stylesheets/` | `main.css` (the site's own styles), `main-responsive.css`, `main-bg.css`, plus trimmed Bootstrap 3, Ionicons, Sinister, slimmenu |
 | `javascripts/custom/` | `main.js` (site behaviour, preloader), `form-validation.js` (contact form) |
-| `javascripts/libs/` | `common.js` (jQuery 2.1.1 and plugins in one file), `bootstrap.min.js` (`isotope.js` and `venobox.min.js` are present but not loaded) |
+| `javascripts/libs/` | `common.js` (jQuery 2.1.1 with Isotope, Venobox, Waypoints, Slimmenu, Stellar and other plugins in one file), `bootstrap.min.js` |
 | `fonts/` | Glyphicons and Ionicons fonts (the text font Barlow is loaded from Google Fonts) |
-| `less/` | LESS sources of colours and fonts; no page loads them |
 | root | `Residence-Studio-Hectolitre-2021.pdf`, `templete.psd`, `robots.txt`, `sitemap.xml`, `.htaccess` |
 
 Backups kept on purpose, not linked from the menu: `index_bcp.html`, `echanges - backup.html`, `participer- backup.html`.
 
 ### Things to know
 
-- The navigation menu is **copied into every page** (194 files). A change to the menu means the same edit in every file;
-  a search-and-replace across `www/*.html` does it.
+- The navigation menu is **copied into every page** (193 files). A change to the menu means the same edit in every file;
+  a search-and-replace across `www/*.html` does it. The same goes for the footer (address, Facebook and Instagram icons,
+  "code source (github)" link), which is in every page except the three backups.
 - Pages are in French and English at once, with `[English]` labels in the menu.
 - Internal links are relative (`memoire.html`), so the site works from any folder, including a test copy.
 - The blue logo `images/hectolitre-blue-logo-2x1.png` (1260 × 640) is the preview image used by the Open Graph tags.
@@ -73,8 +76,8 @@ Backups kept on purpose, not linked from the menu: `index_bcp.html`, `echanges -
 
 1. Copy `www/echange_template.html` to `www/echange_YYMMDD.html` and edit the text, title and description in the `<head>`.
 2. Add the photos to `images/news/` and a thumbnail `images/works/YYMMDD.jpg` (keep images under about 300 KB; see "Image weight").
-3. In `memoire.html`, copy an existing `works-item` block, point it to the new page and thumbnail, and keep the right
-   category class (`evenement`, `residence`, `recherch` or `rencontre`).
+3. In `memoire.html`, copy an existing `works-item` block (cards run from newest to oldest), point it to the new page and
+   thumbnail, and keep the right category class (`evenement`, `residence`, `recherch` or `rencontre`; a card may have several).
 4. If it is a current event, update the "events of the month" panel in `index.html`.
 5. Add the page to `sitemap.xml`.
 6. Preview locally, then upload.
@@ -128,14 +131,20 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
   sent from a fixed address of the domain with the visitor in Reply-To, hidden anti-spam field, link limit, no header injection);
   the form scrolls to its error message; double clicks are blocked.
 - **Phase 7, documentation**: this file; manual GitHub Pages preview.
+- **Phase 8, cleanup and archive**: `post01.html`, the `less/` folder (only referenced from commented-out blocks, now removed
+  from every page), the loose `isotope.js`, `venobox.min.js`, `bgvideo.js`, `isotope.css`, `owl.carousel.css`, unused carousel and
+  skills code in `main.js`, `.DS_Store` files and an Office lock file deleted. `memoire.html` now lists every event page (35
+  added, with new thumbnails in `images/works/`) and is linked from the home page. Instagram icon and "code source (github)"
+  link added to the footers.
 
 ## Known issues and next steps
 
 - **Image weight (phase 3, not done)**: images total about 339 MB. 59 are over 1 MB and 8 pages load more than 5 MB
   (the heaviest, `echange_200107.html`, about 33 MB). Resizing and re-encoding them is the largest remaining speed gain.
-- **`post01.html`**: an old template page linking about 47 pages that never existed. Nothing links to it; it is marked `noindex`.
-- **Event pages not linked from any page**: 27 (reachable by their address only), for example `echange_190115.html`.
-  They are in `sitemap.xml`.
-- **Unused files**: `javascripts/custom/bgvideo.js`, `javascripts/libs/isotope.js`, `javascripts/libs/venobox.min.js`, `stylesheets/isotope.css` and the `less/` folder
-  are not loaded by any page. They are kept for now and can be removed once confirmed.
-- **Heavy third-party code**: `common.js` still bundles the 2014 jQuery 2.1.1 and several plugins.
+- **Heavy third-party code**: `common.js` (223 KB) still bundles the 2014 jQuery 2.1.1 and several plugins. Only the menu,
+  preloader and (on a few pages) the archive filter, lightbox and parallax use them. Options: move to jQuery 3.x with only
+  the plugins in use (`$(window).load()` in `main.js` must become `.on('load')`), or rewrite those few behaviours without jQuery.
+- **Duplicate and oddly named event pages**: `echange_2000926.html` duplicates `echange_200108.html`; `echange_1901010.html`
+  and `echange_2311116.html` have a mistyped date in their name. They are left as they are because their addresses may be linked
+  from outside.
+- **Design files in the web root**: `templete.psd` and `images/works/templete.psd` are source files, not part of the site.
