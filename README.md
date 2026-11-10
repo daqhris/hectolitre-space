@@ -41,9 +41,9 @@ README.md, LICENSE, .gitignore, .gitattributes
 167 pages named **`echange_YYMMDD.html`** (year, month, day of the event), from `echange_180420.html` to `echange_260911.html`.
 Some have a suffix for several events on one day (`echange_190924-1024.html`).
 Special pages: `echange_template.html` (model for a new event page), `echange_playful.html`, `echange_atelier_archive.html`.
-Every event page is listed in `memoire.html` except three, left out on purpose: `echange_template.html`, `echange_playful.html`
-(a 2019 collective flea market, still reachable by its address) and `echange_2000926.html` (a byte-identical copy of `echange_200108.html`,
-kept so that its old address still works).
+Every event page is listed in `memoire.html` except two, left out on purpose: `echange_template.html` (a model, not an event) and
+`echange_2000926.html` (a mistyped copy of `echange_200108.html`; it redirects there, see `.htaccess` and the `<meta refresh>` in its head).
+`echange_playful.html` ("Artists in shared studio", May to September 2019) is listed as a residency.
 
 Each event page's `<title>` and description are taken from its own heading and text.
 
@@ -135,7 +135,8 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
   from every page), the loose `isotope.js`, `venobox.min.js`, `bgvideo.js`, `isotope.css`, `owl.carousel.css`, unused carousel and
   skills code in `main.js`, `.DS_Store` files and an Office lock file deleted. `memoire.html` now lists every event page (35
   added, with new thumbnails in `images/works/`) and is linked from the home page. Instagram icon and "code source (github)"
-  link added to the footers.
+  link added to the footers. Footer copyright now runs from each page's first year to 2026 (the three backup pages keep their
+  old years). `echange_2000926.html` redirects to `echange_200108.html` and is out of `sitemap.xml`.
 
 ## Known issues and next steps
 
@@ -144,7 +145,7 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
 - **Heavy third-party code**: `common.js` (223 KB) still bundles the 2014 jQuery 2.1.1 and several plugins. Only the menu,
   preloader and (on a few pages) the archive filter, lightbox and parallax use them. Options: move to jQuery 3.x with only
   the plugins in use (`$(window).load()` in `main.js` must become `.on('load')`), or rewrite those few behaviours without jQuery.
-- **Duplicate and oddly named event pages**: `echange_2000926.html` duplicates `echange_200108.html`; `echange_1901010.html`
-  and `echange_2311116.html` have a mistyped date in their name. They are left as they are because their addresses may be linked
-  from outside.
+- **Oddly named event pages**: `echange_1901010.html` and `echange_2311116.html` have a mistyped date in their name. They are
+  left as they are because their addresses may be linked from outside. (`echange_2000926.html` also has a typo; it now redirects
+  to `echange_200108.html`.)
 - **Design files in the web root**: `templete.psd` and `images/works/templete.psd` are source files, not part of the site.
