@@ -61,13 +61,15 @@ Each event page's `<title>` and description are taken from its own heading and t
 | `fonts/` | Glyphicons and Ionicons fonts (the text font Barlow is loaded from Google Fonts) |
 | root | `Residence-Studio-Hectolitre-2021.pdf`, `templete.psd`, `robots.txt`, `sitemap.xml`, `.htaccess` |
 
-Backups kept on purpose, not linked from the menu: `index_bcp.html`, `echanges - backup.html`, `participer- backup.html`.
+Three old backup pages (`index_bcp.html`, `echanges - backup.html`, `participer- backup.html`) were removed in phase 8. The
+originals are in the `v0-archive` tag (`git show v0-archive:"www/index_bcp.html"`). If they are still on the server, delete
+them there by FTP.
 
 ### Things to know
 
 - The navigation menu is **copied into every page** (193 files). A change to the menu means the same edit in every file;
   a search-and-replace across `www/*.html` does it. The same goes for the footer (address, Facebook and Instagram icons,
-  "code source (github)" link), which is in every page except the three backups.
+  "code source (github)" link), which is in every page.
 - Pages are in French and English at once, with `[English]` labels in the menu.
 - Internal links are relative (`memoire.html`), so the site works from any folder, including a test copy.
 - The blue logo `images/hectolitre-blue-logo-2x1.png` (1260 × 640) is the preview image used by the Open Graph tags.
@@ -135,8 +137,14 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
   from every page), the loose `isotope.js`, `venobox.min.js`, `bgvideo.js`, `isotope.css`, `owl.carousel.css`, unused carousel and
   skills code in `main.js`, `.DS_Store` files and an Office lock file deleted. `memoire.html` now lists every event page (35
   added, with new thumbnails in `images/works/`) and is linked from the home page. Instagram icon and "code source (github)"
-  link added to the footers. Footer copyright now runs from each page's first year to 2026 (the three backup pages keep their
-  old years). `echange_2000926.html` redirects to `echange_200108.html` and is out of `sitemap.xml`.
+  link added to the footers. Footer copyright now runs from each page's first year to 2026. `echange_2000926.html` redirects to
+  `echange_200108.html` and is out of `sitemap.xml`. The three backup pages were compared with their live pages and removed;
+  the only facts found nowhere else are kept here:
+  - the call "Open call for artists/thinkers in residence" (old `participer` page, linked to `post-1.html`) had deadlines on
+    **15 November 2018 and 15 January 2019**;
+  - **Playful**, studio-in-residence, **July 2018 to June 2019** (old home page, mid-2019);
+  - open calls as shown on that mid-2019 home page: Atelier partagé "open until filled", Residence of Reflection "temporarily
+    closed", Le Réacteur and Trait-d'Union "ongoing, no deadline".
 
 ## Known issues and next steps
 
@@ -148,4 +156,6 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
 - **Oddly named event pages**: `echange_1901010.html` and `echange_2311116.html` have a mistyped date in their name. They are
   left as they are because their addresses may be linked from outside. (`echange_2000926.html` also has a typo; it now redirects
   to `echange_200108.html`.)
+- **`echanges.html`**: the "En construction" placeholder. Nothing links to it any more (only the removed backups did). It could
+  redirect to `memoire.html` or be removed.
 - **Design files in the web root**: `templete.psd` and `images/works/templete.psd` are source files, not part of the site.
