@@ -166,27 +166,6 @@
 
 
 
-//CAROUSEL
- $(".project-carousel").owlCarousel({
-                    loop:true,
-                    margin:0,
-                    dots:false,
-                    nav:true,
-                    navText: false,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:1
-                        },
-                        1000:{
-                            items:1
-                        }
-                    }
-                });
-
-
 
 //Text Ticker
  $(window).load(function(){
@@ -237,20 +216,8 @@
     });   
         
 
- //SKILLS
-    $('.skills').waypoint(function(direction) {
-        $('.progress-bar').each(function() {
-            var progressValue = $(this).attr('data-skills-value');
-            $(this).animate({
-                            width: progressValue+"%"
-                            }, 2500);
-        });
-
-    }, { offset: '25%' });
-
-
  //PARALLAX
-        //Initialize Each Parallax Layer  
+        //Initialize Each Parallax Layer
         function parallaxInit() {
             $.stellar({
                 positionProperty: 'transform'
