@@ -1,6 +1,6 @@
 # hectolitre-space
 
-Source code archive of the official website of Hectolitre, an art space in Brussels: <http://www.hectolitre.space/>
+Source code archive of a website of Hectolitre, an art space in Brussels: <http://www.hectolitre.space/>
 
 The site is a static HTML site with one PHP script (the contact form). It is hosted on an OVH PHP server and is
 updated by uploading the content of `www/` by FTP (FileZilla). This repository keeps its history and makes maintenance
@@ -51,7 +51,7 @@ Each event page's `<title>` and description are taken from its own heading and t
 
 | Folder | Content |
 |---|---|
-| `images/works/` | Thumbnails of the archive grid in `memoire.html`, named `YYMMDD.jpg` (the thumbnails added in phase 8 are 640 px wide and under 150 KB; some older ones are much heavier, see "Image weight") |
+| `images/works/` | Thumbnails of the archive grid in `memoire.html`, named `YYMMDD.jpg` (the thumbnails added in phase 8 are 640 px wide and under 150 KB; some older ones are much heavier) |
 | `images/news/` | Photos used inside event pages (`YYMMDD.jpg`, `YYMMDD-1.jpg`…) |
 | `images/project/`, `images/memoir/`, `images/members/`, `images/clients/`, `images/bg/` | Images of the matching pages |
 | `images/` (root) | Logos (`logo.png`, `hectolitre-blue-logo*.png/jpg`), favicon, icons |
@@ -62,8 +62,7 @@ Each event page's `<title>` and description are taken from its own heading and t
 | root | `Residence-Studio-Hectolitre-2021.pdf`, `templete.psd`, `robots.txt`, `sitemap.xml`, `.htaccess` |
 
 Three old backup pages (`index_bcp.html`, `echanges - backup.html`, `participer- backup.html`) were removed in phase 8. The
-originals are in the `v0-archive` tag (`git show v0-archive:"www/index_bcp.html"`). If they are still on the server, delete
-them there by FTP.
+originals are in the `v0-archive` tag (`git show v0-archive:"www/index_bcp.html"`).
 
 ### Things to know
 
@@ -77,7 +76,7 @@ them there by FTP.
 ## Adding an event
 
 1. Copy `www/echange_template.html` to `www/echange_YYMMDD.html` and edit the text, title and description in the `<head>`.
-2. Add the photos to `images/news/` and a thumbnail `images/works/YYMMDD.jpg` (keep images under about 300 KB; see "Image weight").
+2. Add the photos to `images/news/` and a thumbnail `images/works/YYMMDD.jpg` (keep images under about 300 KB).
 3. In `memoire.html`, copy an existing `works-item` block (cards run from newest to oldest), point it to the new page and
    thumbnail, and keep the right category class (`evenement`, `residence`, `recherch` or `rencontre`; a card may have several).
 4. If it is a current event, update the "events of the month" panel in `index.html`.
@@ -138,13 +137,7 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
   skills code in `main.js`, `.DS_Store` files and an Office lock file deleted. `memoire.html` now lists every event page (35
   added, with new thumbnails in `images/works/`) and is linked from the home page. Instagram icon and "code source (github)"
   link added to the footers. Footer copyright now runs from each page's first year to 2026. `echange_2000926.html` redirects to
-  `echange_200108.html` and is out of `sitemap.xml`. The three backup pages were compared with their live pages and removed;
-  the only facts found nowhere else are kept here:
-  - the call "Open call for artists/thinkers in residence" (old `participer` page, linked to `post-1.html`) had deadlines on
-    **15 November 2018 and 15 January 2019**;
-  - **Playful**, studio-in-residence, **July 2018 to June 2019** (old home page, mid-2019);
-  - open calls as shown on that mid-2019 home page: Atelier partagé "open until filled", Residence of Reflection "temporarily
-    closed", Le Réacteur and Trait-d'Union "ongoing, no deadline".
+  `echange_200108.html` and is out of `sitemap.xml`. Three backup pages were compared with their live pages and removed.
 
 ## Known issues and next steps
 
@@ -156,6 +149,3 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
 - **Oddly named event pages**: `echange_1901010.html` and `echange_2311116.html` have a mistyped date in their name. They are
   left as they are because their addresses may be linked from outside. (`echange_2000926.html` also has a typo; it now redirects
   to `echange_200108.html`.)
-- **`echanges.html`**: the "En construction" placeholder. Nothing links to it any more (only the removed backups did). It could
-  redirect to `memoire.html` or be removed.
-- **Design files in the web root**: `templete.psd` and `images/works/templete.psd` are source files, not part of the site.
