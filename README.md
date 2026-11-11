@@ -141,6 +141,7 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
 
 ## Known issues and next steps
 
+- **Temporary banner**: `index.html` (home page only) shows a blue, non-dismissible bar linking to <https://www.hectolitre.be/> in a new window. It is the `<aside class="site-banner">` block after the skip link, plus the `.site-banner` rules at the end of `stylesheets/main.css`. To remove it, delete both.
 - **Image weight (phase 3, not done)**: images total about 339 MB. 59 are over 1 MB and 8 pages load more than 5 MB
   (the heaviest, `echange_200107.html`, about 33 MB). Resizing and re-encoding them is the largest remaining speed gain.
 - **Heavy third-party code**: `common.js` (223 KB) still bundles the 2014 jQuery 2.1.1 and several plugins. Only the menu,
