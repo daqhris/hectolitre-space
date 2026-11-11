@@ -1194,7 +1194,7 @@ p {
 
 /* Temporary banner on the home page: preview of hectolitre.be.
    --banner-h is the banner height; the fixed header and the mobile menu are moved down by that much. */
-body.home-page { --banner-h: 40px; }
+body.has-banner { --banner-h: 40px; }
 .site-banner {
   position: fixed;
   top: 0;
@@ -1221,10 +1221,10 @@ body.home-page { --banner-h: 40px; }
 }
 .site-banner a strong { margin-left: 0.4em; text-decoration: underline; }
 .site-banner a:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
-body.home-page header.masthead.signature-berend { top: var(--banner-h); }
+body.has-banner header.masthead.signature-berend { top: var(--banner-h); }
 @media (max-width: 1200px) {
-  body.home-page { --banner-h: 52px; }
+  body.has-banner { --banner-h: 52px; }
   .site-banner a { font-size: 13px; flex-wrap: wrap; align-content: center; }
   .site-banner a span, .site-banner a strong { flex: 0 0 100%; margin: 0; }
-  body.home-page .mobile-nav.signature-berend { margin-top: var(--banner-h); }
+  body.has-banner .mobile-nav.signature-berend { margin-top: var(--banner-h); }
 }
