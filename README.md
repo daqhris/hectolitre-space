@@ -34,7 +34,6 @@ README.md, LICENSE, .gitignore, .gitattributes
 | `participer.html`, `post-0.html` … `post-6.html` | Calls for projects / residencies and their detailed announcements |
 | `contact.html`, `sendcontact.php`, `thanks.html` | Contact form, its mail handler, and the confirmation page |
 | `error404.html` | Custom "not found" page (declared in `.htaccess`) |
-| `echanges.html` | Placeholder page ("En construction") |
 
 ### Event pages
 
@@ -59,7 +58,7 @@ Each event page's `<title>` and description are taken from its own heading and t
 | `javascripts/custom/` | `main.js` (site behaviour, preloader), `form-validation.js` (contact form) |
 | `javascripts/libs/` | `common.js` (jQuery 2.1.1 with Isotope, Venobox, Waypoints, Slimmenu, Stellar and other plugins in one file), `bootstrap.min.js` |
 | `fonts/` | Glyphicons and Ionicons fonts (the text font Barlow is loaded from Google Fonts) |
-| root | `Residence-Studio-Hectolitre-2021.pdf`, `templete.psd`, `robots.txt`, `sitemap.xml`, `.htaccess` |
+| root | `Residence-Studio-Hectolitre-2021.pdf`, `robots.txt`, `sitemap.xml`, `.htaccess` |
 
 Three old backup pages (`index_bcp.html`, `echanges - backup.html`, `participer- backup.html`) were removed in phase 8. The
 originals are in the `v0-archive` tag (`git show v0-archive:"www/index_bcp.html"`).
