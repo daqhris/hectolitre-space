@@ -136,7 +136,8 @@ to work with a valid certificate. Because of the caching, a changed CSS/JS file 
   skills code in `main.js`, `.DS_Store` files and an Office lock file deleted. `memoire.html` now lists every event page (35
   added, with new thumbnails in `images/works/`) and is linked from the home page. Instagram icon and "code source (github)"
   link added to the footers. Footer copyright now runs from each page's first year to 2026. `echange_2000926.html` redirects to
-  `echange_200108.html` and is out of `sitemap.xml`. Three backup pages were compared with their live pages and removed.
+  `echange_200108.html` and is out of `sitemap.xml`. Three backup pages were compared with their live pages and removed. The
+  removed placeholder `echanges.html` redirects (301, in `.htaccess`) to `memoire.html`.
 
 ## Known issues and next steps
 

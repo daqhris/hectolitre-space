@@ -15,8 +15,10 @@ ErrorDocument 404 /error404.html
 
 # --- Redirects ----------------------------------------------------------
 # echange_2000926.html is a mistyped copy of echange_200108.html
+# echanges.html (an "En construction" placeholder) was removed; the archive is memoire.html
 <IfModule mod_alias.c>
   Redirect 301 /echange_2000926.html /echange_200108.html
+  Redirect 301 /echanges.html /memoire.html
 </IfModule>
 
 # --- Compression --------------------------------------------------------
