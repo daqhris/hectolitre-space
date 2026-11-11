@@ -1191,3 +1191,40 @@ p {
 .skip-link:focus {
   left: 0;
 }
+
+/* Temporary banner on the home page: preview of hectolitre.be.
+   --banner-h is the banner height; the fixed header and the mobile menu are moved down by that much. */
+body.has-banner { --banner-h: 40px; }
+.site-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--banner-h);
+  z-index: 9950;
+  background: #0c2ae2;
+  font-family: 'Barlow', sans-serif;
+}
+.site-banner a,
+.site-banner a:hover,
+.site-banner a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 12px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.25;
+  text-decoration: none;
+}
+.site-banner a strong { margin-left: 0.4em; text-decoration: underline; }
+.site-banner a:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+body.has-banner header.masthead.signature-berend { top: var(--banner-h); }
+@media (max-width: 1200px) {
+  body.has-banner { --banner-h: 52px; }
+  .site-banner a { font-size: 13px; flex-wrap: wrap; align-content: center; }
+  .site-banner a span, .site-banner a strong { flex: 0 0 100%; margin: 0; }
+  body.has-banner .mobile-nav.signature-berend { margin-top: var(--banner-h); }
+}
