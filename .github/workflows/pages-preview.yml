@@ -3,6 +3,11 @@
 #
 # Run it by hand: Actions > "Pages preview" > Run workflow.
 # One-time setup: Settings > Pages > Build and deployment > Source: "GitHub Actions".
+#
+# If a run fails (for example "Timeout reached" while GitHub syncs the files),
+# start a NEW run with "Run workflow". Do not use "Re-run failed jobs": it
+# uploads a second "github-pages" artifact and the deploy then fails with
+# "Multiple artifacts named github-pages".
 name: Pages preview
 
 on:
@@ -19,12 +24,14 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    # Pinned: "ubuntu-latest" moved to Ubuntu 26.04 on 2026-10-19, which is what
+    # this workflow already runs on. Raise it by hand when a newer image is wanted.
+    runs-on: ubuntu-26.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Copy www/ untouched, except server-only files that make no sense on
       # GitHub Pages (PHP cannot run there and would be shown as plain text).
@@ -35,11 +42,14 @@ jobs:
           rm -f _preview/sendcontact.php _preview/.htaccess
           touch _preview/.nojekyll
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
-      - uses: actions/upload-pages-artifact@v3
+      # include-hidden-files keeps .nojekyll in the artifact (since v4 the
+      # action leaves out dotfiles unless asked).
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _preview
+          include-hidden-files: true
 
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
