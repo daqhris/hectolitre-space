@@ -9,8 +9,8 @@
  */
 
 // ---- Settings: change here only -------------------------------------------
-define( 'RECIPIENT_EMAIL', 'l.hectolitre@gmail.com' );   // who receives the messages
-define( 'SENDER_EMAIL',    'info@hectolitre.space' );    // must be a mailbox of the hosting domain
+define( 'RECIPIENT_EMAIL', 'info@hectolitre.be' );       // who receives the messages (the public mailbox)
+define( 'SENDER_EMAIL',    'info@hectolitre.space' );    // technical sender only: must stay a mailbox of the hosting domain (.space) for the form to work; not shown to visitors
 define( 'SENDER_NAME',     'Site HECTOLITRE' );
 define( 'EMAIL_SUBJECT',   'Message du site hectolitre.space' );
 define( 'MAX_NAME',        100 );
@@ -33,7 +33,7 @@ function finish_page( $ok ) {
      . '<p>Vérifiez que votre nom, une adresse e-mail valide et un message sont renseignés, puis réessayez.</p>'
      . '<h2>Your message could not be sent.</h2>'
      . '<p>Please check that your name, a valid email address and a message are filled in, then try again.</p>'
-     . '<p><a href="contact.html">&larr; contact</a> &middot; <a href="mailto:' . SENDER_EMAIL . '">' . SENDER_EMAIL . '</a></p>'
+     . '<p><a href="contact.html">&larr; contact</a> &middot; <a href="mailto:' . RECIPIENT_EMAIL . '">' . RECIPIENT_EMAIL . '</a></p>'
      . '</body></html>';
   exit;
 }
