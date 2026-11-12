@@ -110,8 +110,10 @@ and the `.htaccess` rules do not apply there. Its `sitemap.xml`, `robots.txt` an
 6. Note the deployed commit (for example with a tag such as `deployed-YYYY-MM-DD`) so that the next upload knows where to start.
 
 After uploading `sendcontact.php`, send one real test message from the live contact page and check that it arrives
-(also look in the spam folder). The settings are at the top of that file; `SENDER_EMAIL` must be a mailbox of the hosting
-domain, otherwise OVH may refuse or flag the mail.
+(also look in the spam folder). The settings are at the top of that file. Messages are delivered to `RECIPIENT_EMAIL`
+(`info@hectolitre.be`, the single public mailbox, also printed in every page footer). `SENDER_EMAIL` deliberately stays
+`info@hectolitre.space`: it is only the technical sender and must be a mailbox of the hosting domain, otherwise OVH may
+refuse or flag the mail. Do not replace it with a `.be` address unless the `.be` mail setup (SPF/DKIM) authorises this server.
 
 `.htaccess` sets UTF-8, the 404 page, compression, browser caching (HTML 1 hour, CSS/JS 1 week, images 1 month) and basic
 security headers. Every block is guarded, so a module missing on the host is skipped instead of breaking the site.
